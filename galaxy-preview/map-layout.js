@@ -1,0 +1,7 @@
+// Screen-space grouping only: no inference of districts or building boundaries.
+export function placeGroup(n){if(!n.osm)return n.kind==='poi'?'landmark':'region';const t=n.tags||{};return t.shop?'shop':['school','kindergarten','university','hospital','clinic','pharmacy','library','bank'].includes(t.amenity)?'service':'building'}
+export function layoutMapPoints(points,{width,height,selected,mobile=false,panel=null,topInset=115}={}){
+ const radius=mobile?30:25,groups=[],ordered=[...points].sort((a,b)=>Number(b.node.id===selected)-Number(a.node.id===selected)||a.priority-b.priority||Math.hypot(a.x-width/2,a.y-height/2)-Math.hypot(b.x-width/2,b.y-height/2));
+ for(const p of ordered){if(p.x<25||p.x>width-25||p.y<topInset||p.y>height-90)continue;if(panel&&p.x>panel.left-20&&p.x<panel.right+20&&p.y>panel.top-20&&p.y<panel.bottom+20)continue;const group=p.node.kind==='poi'?groups.find(g=>g.nodes[0].kind==='poi'&&Math.hypot(g.x-p.x,g.y-p.y)<radius):null;if(group)group.nodes.push(p.node);else groups.push({x:p.x,y:p.y,nodes:[p.node]});}
+ const boxes=[];return groups.map(g=>{const n=g.nodes[0],cluster=g.nodes.length>1,title=cluster?`${g.nodes.length} 处地点`:n.name,w=cluster?90:Math.min(190,Math.max(66,title.length*12+22)),h=32;let label=!boxes.some(b=>Math.abs(g.x-b.x)<(w+b.w)/2+8&&Math.abs(g.y-b.y)<36);if(g.x<w/2+12||g.x>width-w/2-12)label=false;if(label)boxes.push({x:g.x,y:g.y,w});return {...g,id:cluster?'cluster-'+g.nodes.map(n=>n.id).sort().join('_'):n.id,title,label,cluster,category:placeGroup(n)};});
+}

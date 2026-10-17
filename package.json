@@ -1,0 +1,13 @@
+{
+  "name": "cosmos-letter-explorer",
+  "version": "0.1.0",
+  "private": true,
+  "description": "宇宙来信：面向儿童的交互式天文与地理探索网页",
+  "scripts": {
+    "build": "node tools/build-site.mjs",
+    "dev": "npm run build && python3 -m http.server 8766 --bind 127.0.0.1 --directory share-site/dist"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  }
+}

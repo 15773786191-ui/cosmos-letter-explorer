@@ -1,0 +1,10 @@
+/runtime/*
+  Cache-Control: public, max-age=31536000, immutable
+/galaxy-preview/place-directory.json
+  Cache-Control: public, max-age=3600
+/planet-spatial/
+  Cache-Control: public, max-age=3600
+/saturn-layout-preview/
+  Cache-Control: public, max-age=3600
+/saturn-layout-preview/explore.css
+  Cache-Control: public, max-age=3600

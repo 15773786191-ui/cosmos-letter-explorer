@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>黛玉进贾府 · 红楼梦故事剧场</title>
+<meta name="description" content="《红楼梦》第三回动态绘本样片，插画、旁白与原文节选。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237b302c'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='23' fill='%23fff3d2'%3E红%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <header><div class="brand">红楼梦<span>故事剧场</span></div><span class="edition">第三回 · 节选改编</span></header>
+  <section class="theater" aria-label="动态绘本播放器">
+    <div class="stage" id="stage">
+      <div class="art-frame" id="art-frame"><img id="art" src="assets/storyboard.png" alt="荣国府门前，轿子来到石狮子旁"></div>
+      <div class="shade"></div>
+      <div class="scene-label"><span id="scene-number">01 / 08</span><span id="scene-title">一座陌生的大宅</span></div>
+      <div class="intro" id="intro"><span>红楼梦 · 第三回</span><h1>黛玉进贾府</h1><p>一座大宅，一次相见。<br>跟着黛玉，走进这个故事。</p><button id="start">▶ 开始看故事</button><small id="length"></small></div>
+      <div class="caption" id="caption" hidden></div>
+      <div class="ending" id="ending" hidden><span>这一段，到这里</span><h2>你还记得<br>那一声笑吗？</h2><p>王熙凤还没进屋，黛玉先听见了她。<br>你觉得她是怎样一个人？</p><button id="replay">再看一次</button><small>宝黛初见 · 后续故事尚未制作</small></div>
+    </div>
+    <div class="transport">
+      <div class="track-row"><label class="sr-only" for="seek">故事进度</label><input type="range" id="seek" min="0" value="0" step="0.1"><span id="time">0:00 / 0:00</span></div>
+      <div class="controls"><div class="play-controls"><button id="previous" aria-label="上一幕">❮</button><button id="play" class="primary" aria-label="播放">▶ 播放</button><button id="next" aria-label="下一幕">❯</button></div><div class="options"><button id="captions" aria-pressed="true">字幕 开</button><label for="speed" class="sr-only">播放速度</label><select id="speed" aria-label="播放速度"><option value="0.85">0.85×</option><option value="1" selected>1×</option><option value="1.15">1.15×</option></select><button id="original">读这一幕原文</button></div></div>
+    </div>
+  </section>
+  <nav class="chapters" id="chapters" aria-label="选择场景"></nav>
+  <div class="footnote"><p>依据《红楼梦》第三回节选改编 · 插画为艺术演绎 · 旁白为系统合成声音</p><a href="https://zh.wikisource.org/zh-hans/紅樓夢/第003回" target="_blank" rel="noopener">阅读第三回全文</a></div>
+  <p class="status" id="status" role="status"></p>
+</main>
+<dialog id="reading"><form method="dialog"><button class="close" aria-label="关闭原文">×</button></form><span class="eyebrow">回到书里 · 原文节选</span><h2 id="reading-title"></h2><blockquote id="excerpt"></blockquote><p id="context"></p><a href="https://zh.wikisource.org/zh-hans/紅樓夢/第003回" target="_blank" rel="noopener">阅读第三回全文</a></dialog>
+<audio id="audio" preload="auto"></audio>
+<script src="story-data.js"></script><script src="player.js"></script>
+</body></html>

@@ -1,0 +1,51 @@
+const {chromium}=require('/Users/bytedance/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+const assert=require('node:assert/strict');
+(async()=>{
+ const browser=await chromium.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true});
+ const page=await browser.newPage({viewport:{width:1440,height:1150}});const errors=[];
+ page.on('pageerror',e=>errors.push(e.message));
+ page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+ try{
+  await page.goto('http://127.0.0.1:8766/stellar/');
+  await page.waitForFunction(()=>window.STELLAR_READY||window.STELLAR_RENDER_ERROR);
+  assert.equal(await page.evaluate(()=>window.STELLAR_RENDER_ERROR),undefined);
+  assert.equal(await page.locator('canvas').count(),1);
+  await page.screenshot({path:__dirname+'/preview-desktop.png',fullPage:true});
+  await page.click('#cutaway');assert.equal(await page.locator('#legend').isVisible(),true);
+  await page.click('[data-mass="15"]');
+  await page.click('#compare');
+  assert.equal(await page.locator('#object-right').isVisible(),true);
+  assert.ok((await page.locator('#object-right').textContent()).includes('太阳型'));
+  await page.screenshot({path:__dirname+'/preview-interior.png',fullPage:true});
+  await page.locator('#answers button').nth(1).click();assert.equal(await page.locator('#feedback').isVisible(),true);
+  assert.ok((await page.locator('#feedback').textContent()).includes('消耗'));
+  await page.locator('#stages button').nth(5).click();
+  assert.equal(await page.locator('#phase-title').textContent(),'留下中子星');
+  assert.equal(await page.locator('#cutaway').isDisabled(),true);
+  await page.click('[data-mass="30"]');assert.equal(await page.locator('#phase-title').textContent(),'形成恒星级黑洞');
+  assert.equal(await page.locator('#route-note').isVisible(),true);
+  await page.click('[data-mass="1"]');assert.equal(await page.locator('#phase-title').textContent(),'白矮星，慢慢冷却');
+  await page.click('#play');
+  await page.waitForFunction(()=>window.STELLAR_STATE.progress>0&&window.STELLAR_STATE.progress<.5);
+  await page.click('#play');assert.equal(await page.evaluate(()=>window.STELLAR_STATE.playing),false);
+  await page.locator('#evolution').evaluate(el=>{el.value=3;el.dispatchEvent(new Event('input',{bubbles:true}));});
+  assert.equal(await page.locator('#phase-title').textContent(),'向红巨星演化');
+  await page.click('#sources');assert.equal(await page.locator('#source-dialog').evaluate(d=>d.open),true);await page.keyboard.press('Escape');
+  await page.setViewportSize({width:390,height:844});
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
+  await page.click('#compare');await page.click('[data-mass="15"]');await page.locator('#stages button').nth(2).click();
+  await page.screenshot({path:__dirname+'/preview-mobile.png',fullPage:true});
+  const yaw=await page.evaluate(()=>window.STELLAR_STATE.yaw);
+  const box=await page.locator('#viewport').boundingBox();await page.mouse.move(box.x+100,box.y+150);await page.mouse.down();await page.mouse.move(box.x+155,box.y+170,{steps:5});await page.mouse.up();
+  // State is copied on UI updates; clicking cutaway publishes the latest camera state.
+  await page.click('#cutaway');assert.notEqual(await page.evaluate(()=>window.STELLAR_STATE.yaw),yaw);
+  assert.deepEqual(errors,[]);
+  await page.goto('file://'+__dirname+'/恒星的一生-可独立打开.html');
+  await page.waitForFunction(()=>window.STELLAR_READY||window.STELLAR_RENDER_ERROR);
+  assert.equal(await page.evaluate(()=>window.STELLAR_RENDER_ERROR),undefined);
+  await page.click('[data-mass="30"]');await page.locator('#stages button').nth(5).click();
+  assert.equal(await page.locator('#phase-title').textContent(),'形成恒星级黑洞');
+  assert.deepEqual(errors,[]);
+  console.log('PASS: 3D render, cutaway, mass paths, comparison, question feedback, autoplay, timeline, model notes, mobile width and camera drag.');
+ }finally{await browser.close();}
+})().catch(e=>{console.error(e);process.exit(1);});

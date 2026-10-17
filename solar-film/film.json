@@ -1,0 +1,105 @@
+{
+  "cues": [
+    {
+      "scene": "sun",
+      "text": "每天，我们都看见太阳升起。可这颗照亮地球的恒星，会永远亮下去吗？",
+      "duration": 7.296,
+      "audio": "audio/00.mp3",
+      "start": 0
+    },
+    {
+      "scene": "future",
+      "text": "不会。数十亿年后，太阳会膨胀成红巨星，最终散去外层，留下白矮星。",
+      "duration": 8.088,
+      "audio": "audio/01.mp3",
+      "start": 7.296
+    },
+    {
+      "scene": "question",
+      "text": "但它现在为什么能一直发光？我们把镜头推进去，看看太阳内部。",
+      "duration": 6.672,
+      "audio": "audio/02.mp3",
+      "start": 15.384
+    },
+    {
+      "scene": "fusion",
+      "text": "那里非常热。氢原子的核，经过一连串反应，最终形成氦，释放出能量。",
+      "duration": 7.824,
+      "audio": "audio/03.mp3",
+      "start": 22.056
+    },
+    {
+      "scene": "fusion",
+      "text": "这个过程叫核聚变。它不是烧木头，也不需要从太空里吸进氧气。",
+      "duration": 6.768,
+      "audio": "audio/04.mp3",
+      "start": 29.880000000000003
+    },
+    {
+      "scene": "balance",
+      "text": "与此同时，引力一直把太阳的物质向中心拉。为什么太阳没有被自己压垮？",
+      "duration": 7.512,
+      "audio": "audio/05.mp3",
+      "start": 36.648
+    },
+    {
+      "scene": "pressure",
+      "text": "聚变供能，让内部保持高温。高温气体的压力，为恒星提供向外的支持。",
+      "duration": 7.464,
+      "audio": "audio/06.mp3",
+      "start": 44.160000000000004
+    },
+    {
+      "scene": "balance",
+      "text": "向内的引力，与向外的压力支持，形成平衡。太阳可以这样稳定地发光很久。",
+      "duration": 7.992,
+      "audio": "audio/07.mp3",
+      "start": 51.624
+    },
+    {
+      "scene": "compare",
+      "text": "再看旁边这颗质量更大的恒星。它有更多燃料，你猜，它会活得更久吗？",
+      "duration": 7.416,
+      "audio": "audio/08.mp3",
+      "start": 59.616
+    },
+    {
+      "scene": "burn",
+      "text": "答案有点意外。更重的恒星，核心通常更热，消耗燃料的速度也快得多。",
+      "duration": 7.824,
+      "audio": "audio/09.mp3",
+      "start": 67.032
+    },
+    {
+      "scene": "burn",
+      "text": "虽然燃料更多，却用得更快。所以，大质量恒星的寿命，反而可能更短。",
+      "duration": 7.56,
+      "audio": "audio/10.mp3",
+      "start": 74.856
+    },
+    {
+      "scene": "paths",
+      "text": "燃料和结构继续变化，恒星便走向不同结局。太阳留下白矮星，大质量恒星则可能留下中子星或黑洞。",
+      "duration": 10.824,
+      "audio": "audio/11.mp3",
+      "start": 82.416
+    },
+    {
+      "scene": "end",
+      "text": "记住两条线索：聚变供能，帮助维持压力支持；质量不同，燃料消耗和演化也不同。",
+      "duration": 8.544,
+      "audio": "audio/12.mp3",
+      "start": 93.24
+    },
+    {
+      "scene": "end",
+      "text": "下一段，我们沿着这条线索，看太阳为什么会变成一颗红巨星。",
+      "duration": 6.0,
+      "audio": "audio/13.mp3",
+      "start": 101.78399999999999
+    }
+  ],
+  "duration": 107.78399999999999,
+  "voice": "zh-CN-XiaoxiaoNeural",
+  "title": "太阳也会死吗？"
+}

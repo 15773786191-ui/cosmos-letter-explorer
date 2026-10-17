@@ -1,0 +1,22 @@
+.DS_Store
+node_modules/
+.env*
+!.env.example
+.dev.vars*
+!.dev.vars.example
+.wrangler/
+*.log
+*.zip
+__pycache__/
+*.pyc
+# Rebuilt by npm run build; old generated bundles are not source files.
+runtime/
+share-site/dist/
+galaxy-preview/app-*.js
+galaxy-preview/lazy-*.js
+planet-spatial/explore.bundle.js
+saturn-layout-preview/preview.bundle.js
+
+# Existing deployment checkout is maintained separately.
+/share-site/
+.openai/

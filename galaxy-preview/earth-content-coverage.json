@@ -1,0 +1,44 @@
+{
+  "revision": "earth-details-35",
+  "nodes": 12115,
+  "fullArticleProfiles": 7865,
+  "priorReferencesRetained": 25,
+  "coverage": {
+    "region": {
+      "geo": 3390,
+      "culture": 755,
+      "see": 346
+    },
+    "city": {
+      "geo": 4334,
+      "culture": 1907,
+      "see": 859
+    },
+    "country": {
+      "geo": 166,
+      "culture": 164,
+      "see": 63
+    }
+  },
+  "withoutReference": 4225,
+  "requestFailures": 0,
+  "limitations": "Some articles have only short material; references are excerpts rather than complete authored lessons. Missing place content must be marked explicitly and never replaced by latitude teaching.",
+  "authoredCoverage": {
+    "continents": 7,
+    "countries": 12,
+    "mainlandProvinceLevelUnits": 31,
+    "mainlandCities": 17,
+    "additionalWorldCities": 6,
+    "specificPlaces": 24
+  },
+  "interactionRevision": "place-navigation-38",
+  "releaseChanges": [
+    "Default orbit speed 10 days per second",
+    "Marker labels retain tapped identity through pointer capture",
+    "Expanded orbital spacing and body-aware label layout",
+    "Local 2048px globe overview with rendering recovery",
+    "Cross-border landscape links including Himalaya"
+  ],
+  "placeDirectoryNodes": 14118,
+  "physicalDestinations": 2003
+}
